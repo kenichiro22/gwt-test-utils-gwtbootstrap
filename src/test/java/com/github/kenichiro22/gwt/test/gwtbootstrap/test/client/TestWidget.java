@@ -9,20 +9,19 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class TestWidget extends Composite {
 
-	private static TestWidgetUiBinder uiBinder = GWT
-			.create(TestWidgetUiBinder.class);
+   private static TestWidgetUiBinder uiBinder = GWT.create(TestWidgetUiBinder.class);
 
-	interface TestWidgetUiBinder extends UiBinder<Widget, TestWidget> {
-	}
-	
-	@UiField
-	Alert alert;
+   interface TestWidgetUiBinder extends UiBinder<Widget, TestWidget> {
+   }
 
-	public TestWidget() {
-		initWidget(uiBinder.createAndBindUi(this));
-	}
+   @UiField
+   Alert alert;
 
-	public Alert getAlert(){
-	  return alert;
-	}
+   public TestWidget() {
+      initWidget(uiBinder.createAndBindUi(this));
+   }
+
+   public Alert getAlert() {
+      return alert;
+   }
 }

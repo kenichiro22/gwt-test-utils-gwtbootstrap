@@ -8,8 +8,8 @@ import com.googlecode.gwt.test.patchers.PatchMethod;
 @PatchClass(Button.LoadingStateBehavior.class)
 public class ButtonLoadingStateBehaviorPatcher {
 
-  @PatchMethod
-  static void setLoadingBehavior(Button.LoadingStateBehavior lsb, Element e, String behavior){
-    // Nothing to do.
-  }
+	@PatchMethod
+	static void setLoadingBehavior(Button.LoadingStateBehavior lsb, Element e, String behavior) {
+		// Nothing to do.
+	}
 }

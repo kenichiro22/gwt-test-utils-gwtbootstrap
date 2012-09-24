@@ -8,17 +8,17 @@ public class GwtBootstrapModule implements EntryPoint {
 
 	private TestWidget widget;
 
-  @Override
+	@Override
 	public void onModuleLoad() {
-	  FlowPanel panel = new FlowPanel();
-    RootLayoutPanel.get().add(panel);
-    
-    widget = new TestWidget();
-    panel.add(widget);	  
+		FlowPanel panel = new FlowPanel();
+		RootLayoutPanel.get().add(panel);
+
+		widget = new TestWidget();
+		panel.add(widget);
 	}
 
-  public TestWidget getWidget() {
-    return widget;
-  }
+	public TestWidget getWidget() {
+		return widget;
+	}
 
 }

@@ -7,8 +7,8 @@ import com.googlecode.gwt.test.patchers.PatchMethod;
 @PatchClass(TabLink.class)
 public class TabLinkPatcher {
 
-  @PatchMethod
-  public static void show(TabLink tabLink){
-    // TOOD: Not implement yet ??
-  }
+	@PatchMethod
+	public static void show(TabLink tabLink) {
+		// TOOD: Not implement yet ??
+	}
 }

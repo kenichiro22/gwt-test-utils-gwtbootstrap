@@ -8,7 +8,7 @@ import com.googlecode.gwt.test.patchers.PatchMethod;
 @PatchClass(DropdownBase.class)
 public class DropDownBaseTest {
 
-  @PatchMethod
-  public static void configure(DropdownBase dropdownBase, Element e){
-  }
+	@PatchMethod
+	public static void configure(DropdownBase dropdownBase, Element e) {
+	}
 }

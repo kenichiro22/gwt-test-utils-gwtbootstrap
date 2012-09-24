@@ -20,47 +20,47 @@ import com.googlecode.gwt.test.GwtModule;
 public class PatcherTest extends GwtBootstrapTest {
 
 	public void setUpGwtBootstrap() {
-		
-	}
-	
-	@Test
-	public void testButtonLoadingState(){
-	  Button b = new Button("button");
-	  b.state().complete();
-	}
-	
-	@Test
-	public void testDropDown(){
-	  // onLoad
-    GwtBootstrapModule module = new GwtBootstrapModule();
-    module.onModuleLoad();
-	  
-	}
-	
-	@Test
-	public void testAlertBase(){
-	  // onAttach
-	  GwtBootstrapModule module = new GwtBootstrapModule();
-	  module.onModuleLoad();
-	  
-	  Alert alert = module.getWidget().getAlert();
 
-	  final CloseHandler closeHandler = mock(CloseHandler.class);
-    alert.addCloseHandler(closeHandler);
-	  
-    final ClosedHandler closedHandler = mock(ClosedHandler.class);
-    alert.addClosedHandler(closedHandler);
-    
-    alert.close();
-    
-    verify(closeHandler).onClose(any(CloseEvent.class));
-    verify(closedHandler).onClosed(any(ClosedEvent.class));
 	}
-	
+
 	@Test
-	public void testTabLink(){
-	  TabLink tabLink = new TabLink();
-	  tabLink.setText("Tab");
-	  tabLink.show();
+	public void testButtonLoadingState() {
+		Button b = new Button("button");
+		b.state().complete();
+	}
+
+	@Test
+	public void testDropDown() {
+		// onLoad
+		GwtBootstrapModule module = new GwtBootstrapModule();
+		module.onModuleLoad();
+
+	}
+
+	@Test
+	public void testAlertBase() {
+		// onAttach
+		GwtBootstrapModule module = new GwtBootstrapModule();
+		module.onModuleLoad();
+
+		Alert alert = module.getWidget().getAlert();
+
+		final CloseHandler closeHandler = mock(CloseHandler.class);
+		alert.addCloseHandler(closeHandler);
+
+		final ClosedHandler closedHandler = mock(ClosedHandler.class);
+		alert.addClosedHandler(closedHandler);
+
+		alert.close();
+
+		verify(closeHandler).onClose(any(CloseEvent.class));
+		verify(closedHandler).onClosed(any(ClosedEvent.class));
+	}
+
+	@Test
+	public void testTabLink() {
+		TabLink tabLink = new TabLink();
+		tabLink.setText("Tab");
+		tabLink.show();
 	}
 }
