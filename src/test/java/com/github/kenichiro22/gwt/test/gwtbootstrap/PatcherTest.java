@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.github.gwtbootstrap.client.ui.Alert;
 import com.github.gwtbootstrap.client.ui.Button;
+import com.github.gwtbootstrap.client.ui.TabLink;
 import com.github.gwtbootstrap.client.ui.event.CloseEvent;
 import com.github.gwtbootstrap.client.ui.event.CloseHandler;
 import com.github.gwtbootstrap.client.ui.event.ClosedEvent;
@@ -54,5 +55,12 @@ public class PatcherTest extends GwtBootstrapTest {
     
     verify(closeHandler).onClose(any(CloseEvent.class));
     verify(closedHandler).onClosed(any(ClosedEvent.class));
+	}
+	
+	@Test
+	public void testTabLink(){
+	  TabLink tabLink = new TabLink();
+	  tabLink.setText("Tab");
+	  tabLink.show();
 	}
 }
