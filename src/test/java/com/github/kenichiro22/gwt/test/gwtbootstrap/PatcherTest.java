@@ -29,7 +29,16 @@ public class PatcherTest extends GwtBootstrapTest {
 	}
 	
 	@Test
+	public void testDropDown(){
+	  // onLoad
+    GwtBootstrapModule module = new GwtBootstrapModule();
+    module.onModuleLoad();
+	  
+	}
+	
+	@Test
 	public void testAlertBase(){
+	  // onAttach
 	  GwtBootstrapModule module = new GwtBootstrapModule();
 	  module.onModuleLoad();
 	  
