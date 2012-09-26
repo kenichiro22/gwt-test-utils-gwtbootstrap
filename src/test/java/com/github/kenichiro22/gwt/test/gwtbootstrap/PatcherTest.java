@@ -12,6 +12,8 @@ import com.github.gwtbootstrap.client.ui.Alert;
 import com.github.gwtbootstrap.client.ui.Button;
 import com.github.gwtbootstrap.client.ui.Modal;
 import com.github.gwtbootstrap.client.ui.ModalFooter;
+import com.github.gwtbootstrap.client.ui.Navbar;
+import com.github.gwtbootstrap.client.ui.Scrollspy;
 import com.github.gwtbootstrap.client.ui.TabLink;
 import com.github.gwtbootstrap.client.ui.event.CloseEvent;
 import com.github.gwtbootstrap.client.ui.event.CloseHandler;
@@ -88,13 +90,13 @@ public class PatcherTest extends GwtBootstrapTest {
 
       final ShowHandler showHandler = mock(ShowHandler.class);
       modal.addShowHandler(showHandler);
-      
+
       final ShownHandler shownHandler = mock(ShownHandler.class);
       modal.addShownHandler(shownHandler);
 
       final HideHandler hideHandler = mock(HideHandler.class);
       modal.addHideHandler(hideHandler);
-      
+
       final HiddenHandler hiddenHandler = mock(HiddenHandler.class);
       modal.addHiddenHandler(hiddenHandler);
 
@@ -102,7 +104,7 @@ public class PatcherTest extends GwtBootstrapTest {
 
       modal.show();
       assertTrue(modal.isVisible());
-      
+
       verify(showHandler).onShow(any(ShowEvent.class));
       verify(shownHandler).onShown(any(ShownEvent.class));
 
@@ -114,9 +116,16 @@ public class PatcherTest extends GwtBootstrapTest {
 
       modal.toggle();
       assertTrue(modal.isVisible());
-      
+
       // for unsetHandlerFunctions
       modal.setDynamicSafe(true);
       modal.hide();
+   }
+
+   @Test
+   public void testScrollspy() {
+      Scrollspy spy = new Scrollspy();
+      spy.configure();
+      spy.refresh();
    }
 }
