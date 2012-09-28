@@ -12,7 +12,7 @@ import com.github.gwtbootstrap.client.ui.Alert;
 import com.github.gwtbootstrap.client.ui.Button;
 import com.github.gwtbootstrap.client.ui.Modal;
 import com.github.gwtbootstrap.client.ui.ModalFooter;
-import com.github.gwtbootstrap.client.ui.Navbar;
+import com.github.gwtbootstrap.client.ui.Popover;
 import com.github.gwtbootstrap.client.ui.Scrollspy;
 import com.github.gwtbootstrap.client.ui.TabLink;
 import com.github.gwtbootstrap.client.ui.event.CloseEvent;
@@ -127,5 +127,21 @@ public class PatcherTest extends GwtBootstrapTest {
       Scrollspy spy = new Scrollspy();
       spy.configure();
       spy.refresh();
+   }
+
+   @Test
+   public void testPopover() {
+      Popover popover = new Popover();
+      popover.setHeading("heading");
+      popover.setText("conetnt");
+      
+      popover.setWidget(new Button("test"));
+      
+      popover.show();
+      popover.hide();
+     
+      // for configure()
+      popover.asWidget();
+      this.getBrowserSimulator().fireLoopEnd();
    }
 }
