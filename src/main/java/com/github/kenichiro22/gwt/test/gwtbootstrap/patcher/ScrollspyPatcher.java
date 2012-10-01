@@ -6,12 +6,12 @@ import com.googlecode.gwt.test.patchers.PatchClass;
 import com.googlecode.gwt.test.patchers.PatchMethod;
 
 /**
- * Patcher for {@code Scrollspy}.
+ * Patcher for {@link Scrollspy}.
  * <p>
- * This patcher do nothing only for avoiding {@code UnsatisfiedLinkError}.
+ * This patcher do nothing only for avoiding {@link UnsatisfiedLinkError}.
  * 
- * @author ktana
- *
+ * @author Kenichiro Tanaka
+ * 
  */
 @PatchClass(Scrollspy.class)
 public class ScrollspyPatcher {

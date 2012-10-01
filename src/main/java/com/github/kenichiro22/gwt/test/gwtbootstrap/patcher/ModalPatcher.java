@@ -7,6 +7,12 @@ import com.googlecode.gwt.test.patchers.PatchClass;
 import com.googlecode.gwt.test.patchers.PatchMethod;
 import com.googlecode.gwt.test.utils.GwtReflectionUtils;
 
+/**
+ * Patcher for {@link Modal}.
+ * 
+ * @author Kenichiro Tanaka
+ *
+ */
 @PatchClass(Modal.class)
 public class ModalPatcher {
    @PatchMethod

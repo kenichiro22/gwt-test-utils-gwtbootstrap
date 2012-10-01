@@ -5,6 +5,14 @@ import com.google.gwt.dom.client.Element;
 import com.googlecode.gwt.test.patchers.PatchClass;
 import com.googlecode.gwt.test.patchers.PatchMethod;
 
+/**
+ * Patcher for {@link DropdownBase}.
+ * <p>
+ * This patcher do nothing only for avoiding {@link UnsatisfiedLinkError}.
+ * 
+ * @author Kenichiro Tanaka
+ *
+ */
 @PatchClass(DropdownBase.class)
 public class DropDownBaseTest {
 

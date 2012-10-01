@@ -6,9 +6,9 @@ import com.googlecode.gwt.test.patchers.PatchClass;
 import com.googlecode.gwt.test.patchers.PatchMethod;
 
 /**
- * Patcher for {@code Popover}.
+ * Patcher for {@link Popover}.
  * <p>
- * This patcher do nothing only for avoiding {@code UnsatisfiedLinkError}.
+ * This patcher do nothing only for avoiding {@link UnsatisfiedLinkError}.
  * 
  * @author Kenichiro Tanaka
  * 

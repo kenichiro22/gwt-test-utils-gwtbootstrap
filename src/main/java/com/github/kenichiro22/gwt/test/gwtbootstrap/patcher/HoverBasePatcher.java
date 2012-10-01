@@ -6,7 +6,10 @@ import com.googlecode.gwt.test.patchers.PatchClass;
 import com.googlecode.gwt.test.patchers.PatchMethod;
 
 /**
- * Patcher for {@code HoverBase}.
+ * Patcher for {@link HoverBase}.
+ * 
+ * <p>
+ * This patcher do nothing only for avoiding {@code UnsatisfiedLinkError}.
  * 
  * @author Kenichiro Tanaka
  *
