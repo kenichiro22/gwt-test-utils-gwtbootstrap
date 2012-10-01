@@ -19,6 +19,7 @@ import com.github.gwtbootstrap.client.ui.ModalFooter;
 import com.github.gwtbootstrap.client.ui.Popover;
 import com.github.gwtbootstrap.client.ui.Scrollspy;
 import com.github.gwtbootstrap.client.ui.TabLink;
+import com.github.gwtbootstrap.client.ui.Tooltip;
 import com.github.gwtbootstrap.client.ui.event.CloseEvent;
 import com.github.gwtbootstrap.client.ui.event.CloseHandler;
 import com.github.gwtbootstrap.client.ui.event.ClosedEvent;
@@ -37,6 +38,12 @@ import com.googlecode.gwt.test.GwtModule;
 import com.googlecode.gwt.test.GwtTestWithMockito;
 import com.googlecode.gwt.test.utils.events.Browser;
 
+/**
+ * Test for Patchers.
+ * 
+ * @author Kenichiro Tanaka
+ *
+ */
 @GwtModule("com.github.kenichiro22.gwt.test.gwtbootstrap.test.GwtBootstrapTest")
 public class PatcherTest extends GwtTestWithMockito {
    @Mock
@@ -47,10 +54,6 @@ public class PatcherTest extends GwtTestWithMockito {
    private HideHandler hideHandler;
    @Mock
    private HiddenHandler hiddenHandler;
-
-   public void setUpGwtBootstrap() {
-
-   }
 
    @Test
    public void testButtonLoadingState() {
@@ -63,7 +66,6 @@ public class PatcherTest extends GwtTestWithMockito {
       // onLoad
       GwtBootstrapModule module = new GwtBootstrapModule();
       module.onModuleLoad();
-
    }
 
    @Test
@@ -193,5 +195,19 @@ public class PatcherTest extends GwtTestWithMockito {
       // for configure()
       popover.asWidget();
       this.getBrowserSimulator().fireLoopEnd();
+   }
+   
+   @Test
+   public void testTooltip() {
+      Tooltip tooltip = new Tooltip("test");
+      tooltip.setWidget(new Button("button"));
+      tooltip.show();
+      tooltip.hide();
+      
+      // for configure()
+      tooltip.asWidget();
+      this.getBrowserSimulator().fireLoopEnd();
+      
+      // TODO: TooltipCellDecorator test.
    }
 }
