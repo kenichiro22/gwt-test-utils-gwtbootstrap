@@ -4,12 +4,16 @@ import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import org.junit.Test;
+import org.mockito.Mock;
 
 import com.github.gwtbootstrap.client.ui.Alert;
 import com.github.gwtbootstrap.client.ui.Button;
+import com.github.gwtbootstrap.client.ui.Collapse;
+import com.github.gwtbootstrap.client.ui.CollapseTrigger;
 import com.github.gwtbootstrap.client.ui.Modal;
 import com.github.gwtbootstrap.client.ui.ModalFooter;
 import com.github.gwtbootstrap.client.ui.Popover;
@@ -30,9 +34,19 @@ import com.github.gwtbootstrap.client.ui.event.ShownHandler;
 import com.github.kenichiro22.gwt.test.gwtbootstrap.test.client.GwtBootstrapModule;
 import com.google.gwt.user.client.ui.Label;
 import com.googlecode.gwt.test.GwtModule;
+import com.googlecode.gwt.test.GwtTestWithMockito;
+import com.googlecode.gwt.test.utils.events.Browser;
 
 @GwtModule("com.github.kenichiro22.gwt.test.gwtbootstrap.test.GwtBootstrapTest")
-public class PatcherTest extends GwtBootstrapTest {
+public class PatcherTest extends GwtTestWithMockito {
+   @Mock
+   private ShowHandler showHandler;
+   @Mock
+   private ShownHandler shownHandler;
+   @Mock
+   private HideHandler hideHandler;
+   @Mock
+   private HiddenHandler hiddenHandler;
 
    public void setUpGwtBootstrap() {
 
@@ -88,16 +102,9 @@ public class PatcherTest extends GwtBootstrapTest {
       footer.add(new Button("close"));
       modal.add(footer);
 
-      final ShowHandler showHandler = mock(ShowHandler.class);
       modal.addShowHandler(showHandler);
-
-      final ShownHandler shownHandler = mock(ShownHandler.class);
       modal.addShownHandler(shownHandler);
-
-      final HideHandler hideHandler = mock(HideHandler.class);
       modal.addHideHandler(hideHandler);
-
-      final HiddenHandler hiddenHandler = mock(HiddenHandler.class);
       modal.addHiddenHandler(hiddenHandler);
 
       assertFalse(modal.isVisible());
@@ -130,16 +137,59 @@ public class PatcherTest extends GwtBootstrapTest {
    }
 
    @Test
+   public void testCollapse() {
+      final CollapseTrigger trigger = new CollapseTrigger("#myCollapse");
+      final Button triggerButton = new Button("trigger");
+      trigger.add(triggerButton);
+
+      final Collapse collapse = new Collapse();
+      collapse.setId("myCollapse");
+      collapse.setWidget(new Label("test"));
+      collapse.setExistTrigger(true);
+      collapse.setToggle(true);
+      
+      collapse.addShowHandler(showHandler);
+      collapse.addShownHandler(shownHandler);
+      collapse.addHideHandler(hideHandler);
+      collapse.addHiddenHandler(hiddenHandler);
+
+      collapse.asWidget();
+      trigger.asWidget();
+      
+      getBrowserSimulator().fireLoopEnd();
+            
+      collapse.hide();
+      verify(hideHandler).onHide(any(HideEvent.class));
+      verify(hiddenHandler).onHidden(any(HiddenEvent.class));
+      
+      collapse.show();
+      verify(showHandler).onShow(any(ShowEvent.class));
+      verify(shownHandler).onShown(any(ShownEvent.class));
+
+      collapse.toggle();
+      verify(hideHandler, times(2)).onHide(any(HideEvent.class));
+      verify(hiddenHandler, times(2)).onHidden(any(HiddenEvent.class));
+
+      // call asWidget twice to invoke configure(String selector, String parent, boolean toggle)
+      trigger.asWidget();
+
+      // click to invoke changeVisibility(String target, String c)
+      Browser.click(triggerButton);
+
+      getBrowserSimulator().fireLoopEnd();
+   }
+
+   @Test
    public void testPopover() {
       Popover popover = new Popover();
       popover.setHeading("heading");
       popover.setText("conetnt");
-      
+
       popover.setWidget(new Button("test"));
-      
+
       popover.show();
       popover.hide();
-     
+
       // for configure()
       popover.asWidget();
       this.getBrowserSimulator().fireLoopEnd();

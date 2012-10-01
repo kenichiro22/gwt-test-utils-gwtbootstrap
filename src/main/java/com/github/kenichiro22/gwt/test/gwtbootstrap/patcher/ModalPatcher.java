@@ -1,6 +1,7 @@
 package com.github.kenichiro22.gwt.test.gwtbootstrap.patcher;
 
 import com.github.gwtbootstrap.client.ui.Modal;
+import com.github.gwtbootstrap.client.ui.constants.VisibilityChange;
 import com.google.gwt.dom.client.Element;
 import com.googlecode.gwt.test.patchers.PatchClass;
 import com.googlecode.gwt.test.patchers.PatchMethod;
@@ -10,13 +11,13 @@ import com.googlecode.gwt.test.utils.GwtReflectionUtils;
 public class ModalPatcher {
    @PatchMethod
    public static void changeVisibility(Modal modal, Element e, String visibility){
-      if("show".equals(visibility)){
+      if(VisibilityChange.SHOW.get().equals(visibility) && !modal.isVisible()){
          show(modal);
       }
-      else if("hide".equals(visibility)){
+      else if(VisibilityChange.HIDE.get().equals(visibility) && modal.isVisible()){
          hide(modal);
       }
-      else if("toggle".equals(visibility)){
+      else if(VisibilityChange.TOGGLE.get().equals(visibility)){
          if(modal.isVisible()){
             hide(modal);
          }
